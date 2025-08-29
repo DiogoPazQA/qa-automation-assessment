@@ -1,0 +1,17 @@
+{
+  "name": "qa-automation-assessment",
+  "version": "1.0.0",
+  "description": "Projeto de avaliação para vaga de QA Automation Engineer, cobrindo:\r - **Testes de Carga** (K6)\r - **Testes de API** (Playwright)\r - **Testes End-to-End (E2E)** (Playwright + Page Object Model)\r - **Testes Mobile** (Appium)\r - **Integração CI/CD** (GitHub Actions)\r - **Relatórios** (Allure)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "allure-playwright": "^3.3.3"
+  }
+}
