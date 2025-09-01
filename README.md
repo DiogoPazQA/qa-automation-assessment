@@ -21,7 +21,7 @@ Projeto de automação, cobrindo:
 
 =======
 
-## Versões ###
+### Versões ###
 - Node.js 18+  
 - Playwright 1.47+  
 - Appium 2.x  
@@ -30,6 +30,21 @@ Projeto de automação, cobrindo:
 
 =======
 
-## Instalação ###
+### Instalação ###
 ```bash
 npm install
+
+
+### Execução ###
+
+# API tests: npx playwright test api-tests/
+
+# E2E tests: npx playwright test e2e-tests/
+
+# Load test: k6 run load-tests/load_test.js
+
+# Mobile test: npx mocha mobile-tests/loginForm.test.js
+
+### Relatórios ###
+
+# Relatórios ficam disponíveis em /reports.
