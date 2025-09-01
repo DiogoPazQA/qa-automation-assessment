@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -46,7 +46,7 @@ jobs:
     needs: playwright-tests
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
@@ -61,10 +61,10 @@ jobs:
     needs: playwright-tests
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -77,8 +77,4 @@ jobs:
           npm install -g appium
           appium --version
 
-      # Aqui deveria rodar o emulador Android/iOS
-      # Exemplo: avdmanager + emulator (não habilitado por padrão no Actions)
-
-      - name: Run Appium Tests (placeholder)
-        run: echo "Rodaria testes mobile aqui se emulador estivesse ativo"
+      - name: Run Appium Tes
