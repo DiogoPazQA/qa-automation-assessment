@@ -65,7 +65,7 @@ jobs:
       - name: Run K6 Load Test
         uses: grafana/run-k6-action@v1
         with:
-          path: load_tests/load-test.js
+          path: load-tests/load_test.js
           flags: --vus 50 --duration 10s
 
   appium-tests:
