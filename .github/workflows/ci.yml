@@ -60,7 +60,7 @@ jobs:
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
         with:
-          version: v0.50.0
+          k6-version: '0.50.0'
 
       - name: Run K6 Load Test
         uses: grafana/run-k6-action@v1
