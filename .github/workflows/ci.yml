@@ -34,7 +34,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests (E2E + API)
-        run: npx playwright test --reporter=line,allure-playwright
+        run: npx playwright test --reporter=line,allure-playwright,html
 
       - name: Upload Playwright Report
         if: always()
@@ -60,10 +60,13 @@ jobs:
       - name: Setup K6
         uses: grafana/setup-k6-action@v1
         with:
-          version: v0.50.0
+          k6-version: '0.50.0'
 
       - name: Run K6 Load Test
-        run: k6 run tests/load-test.js
+        uses: grafana/run-k6-action@v1
+        with:
+          path: tests/load-test.js
+          flags: --vus 50 --duration 10s
 
   appium-tests:
     runs-on: ubuntu-latest
