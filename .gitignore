@@ -1,5 +1,6 @@
 node_modules/
 .env
 *.log
+*.json
 allure-results/
 "reports/k6-report.json" 
