@@ -30,11 +30,6 @@ Projeto de automação, cobrindo:
 
 =======
 
-### Instalação ###
-```bash
-npm install
-
-
 ### Execução ###
 
 # API tests: npx playwright test api-tests/
@@ -45,6 +40,14 @@ npm install
 
 # Mobile test: npx mocha mobile-tests/loginForm.test.js
 
+=======
+
 ### Relatórios ###
 
 # Relatórios ficam disponíveis em /reports.
+
+=======
+
+### Instalação ###
+```bash
+npm install
