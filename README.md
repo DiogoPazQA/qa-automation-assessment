@@ -32,19 +32,19 @@ Projeto de automação, cobrindo:
 
 ### Execução ###
 
-# API tests: npx playwright test api-tests/
+- `API tests`: npx playwright test api-tests/
 
-# E2E tests: npx playwright test e2e-tests/
+- `E2E tests`: npx playwright test e2e-tests/
 
-# Load test: k6 run load-tests/load_test.js
+- `Load test`: k6 run load-tests/load_test.js
 
-# Mobile test: npx mocha mobile-tests/loginForm.test.js
+- `Mobile test`: npx mocha mobile-tests/loginForm.test.js
 
 =======
 
 ### Relatórios ###
 
-# Relatórios ficam disponíveis em /reports.
+- Relatórios ficam disponíveis em /reports.
 
 =======
 
