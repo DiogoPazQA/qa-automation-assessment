@@ -1,0 +1,96 @@
+name: QA Automation Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+
+jobs:
+  playwright-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Override upload-artifact to v4
+        uses: actions/upload-artifact@v4
+        with:
+          name: noop
+          path: README.md
+          retention-days: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests (E2E + API)
+        run: npx playwright test --reporter=line,allure-playwright,html
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+
+      - name: Upload Allure Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results/
+
+  k6-load-test:
+    runs-on: ubuntu-latest
+    needs: playwright-tests
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup K6
+        uses: grafana/setup-k6-action@v1
+        with:
+          k6-version: '0.50.0'
+
+      - name: Run K6 Load Test
+        uses: grafana/run-k6-action@v1
+        with:
+          path: load_tests/load-test.js
+          flags: --vus 50 --duration 10s
+
+  appium-tests:
+    runs-on: ubuntu-latest
+    needs: playwright-tests
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      # ⚠️ Configuração mínima Appium (sem emulador real)
+      - name: Install Appium
+        run: |
+          npm install -g appium
+          appium --version
+
+      # Aqui deveria rodar o emulador Android/iOS
+      # Exemplo: avdmanager + emulator (não habilitado por padrão no Actions)
+
+      - name: Run Appium Tests (placeholder)
+        run: echo "Rodaria testes mobile aqui se emulador estivesse ativo"

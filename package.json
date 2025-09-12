@@ -1,17 +1,15 @@
 {
   "name": "qa-automation-assessment",
   "version": "1.0.0",
-  "description": "Projeto de avaliação para vaga de QA Automation Engineer, cobrindo:\r - **Testes de Carga** (K6)\r - **Testes de API** (Playwright)\r - **Testes End-to-End (E2E)** (Playwright + Page Object Model)\r - **Testes Mobile** (Appium)\r - **Integração CI/CD** (GitHub Actions)\r - **Relatórios** (Allure)",
-  "main": "index.js",
+  "description": "Projeto de avaliação QA com Playwright (E2E + API) e K6 (Performance).",
   "scripts": {
-    "test": "playwright test --reporter=line,allure-playwright"
+    "test:e2e": "npx playwright test tests/e2e --reporter=html",
+    "test:api": "npx playwright test tests/api --reporter=html",
+    "test:perf": "k6 run tests/performance/load-test.js",
+    "start:api": "json-server --watch db.json --port 3000"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "allure-playwright": "^3.3.3"
+    "@playwright/test": "^1.49.0",
+    "json-server": "^1.0.0-beta.3"
   }
 }
