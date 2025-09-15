@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: QA Automation Pipeline
 
 on:
   push:
@@ -10,7 +10,15 @@ jobs:
   playwright-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Override upload-artifact to v4
+        uses: actions/upload-artifact@v4
+        with:
+          name: noop
+          path: README.md
+          retention-days: 1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
