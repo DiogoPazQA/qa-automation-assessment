@@ -27,6 +27,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+      
+      - name: Start JSON Server
+        run: npx json-server --watch db.json --port 3000 &
+
 
       - name: Run Playwright tests (E2E + API)
         run: npx playwright test --reporter=line,html --output=reports/playwright
@@ -57,3 +61,4 @@ jobs:
         with:
           name: k6-report
           path: reports/k6
+
