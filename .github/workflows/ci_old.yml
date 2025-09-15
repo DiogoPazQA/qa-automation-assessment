@@ -33,8 +33,11 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Start JSON Server
+        run: npx json-server --watch db.json --port 3000 &
+
       - name: Run Playwright tests (E2E + API)
-        run: npx playwright test --reporter=line,allure-playwright,html
+        run: npx playwright test --reporter=line,html
 
       - name: Upload Playwright Report
         if: always()
