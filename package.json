@@ -5,7 +5,7 @@
   "scripts": {
     "test:e2e": "npx playwright test tests/e2e --reporter=html",
     "test:api": "npx playwright test tests/api --reporter=html",
-    "test:perf": "k6 run tests/performance/load-test.js",
+    "test:perf": "k6 run tests/performance/load_test.js",
     "start:api": "json-server --watch db.json --port 3000"
   },
   "devDependencies": {
